@@ -10,6 +10,4 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'Employee Time Tracker';
-}
+export class AppComponent {}
