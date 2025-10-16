@@ -1,22 +1,22 @@
-<section>
+<section class="wrap">
   <h2>Employees by Total Hours</h2>
+  <p class="muted">Ordered by total time worked (desc). Rows under 100 hrs are highlighted.</p>
 
   <ng-container *ngIf="employees$ | async as employees; else loading">
-    <table class="emp-table" aria-describedby="table-caption">
-      <caption id="table-caption">Ordered by total time worked (desc). Rows under 100 hrs are highlighted.</caption>
+    <table class="grid" aria-label="Employees by total time">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Employee</th>
-          <th scope="col">Total Hours</th>
+          <th>Name</th>
+          <th>Total Time in Month</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let e of employees; let i = index; trackBy: trackByName"
-            [class.low-hours]="e.totalHours < 100">
-          <td>{{ i + 1 }}</td>
+            [class.low]="e.totalHours < 100">
           <td>{{ e.name }}</td>
-          <td>{{ e.totalHours }}</td>
+          <td>{{ e.totalHours }} hrs</td>
+          <td><a href="#" (click)="$event.preventDefault(); onEdit(e.name)">Edit</a></td>
         </tr>
       </tbody>
     </table>
