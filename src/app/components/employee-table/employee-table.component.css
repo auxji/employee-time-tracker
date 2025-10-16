@@ -1,0 +1,16 @@
+.emp-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.emp-table th, .emp-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+.emp-table thead th {
+  border-bottom: 2px solid #bbb;
+}
+.low-hours {
+  background-color: #fff3cd; /* subtle warning */
+}
+.muted { color: #666; }

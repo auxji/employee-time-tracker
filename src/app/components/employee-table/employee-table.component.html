@@ -1,20 +1,30 @@
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Department</th>
-      <th>Total Hours</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let emp of employees">
-      <td>{{ emp.id }}</td>
-      <td>{{ emp.name }}</td>
-      <td>{{ emp.position }}</td>
-      <td>{{ emp.department }}</td>
-      <td>{{ emp.totalHours }}</td>
-    </tr>
-  </tbody>
-</table>
+<section>
+  <h2>Employees by Total Hours</h2>
+
+  <ng-container *ngIf="employees$ | async as employees; else loading">
+    <table class="emp-table" aria-describedby="table-caption">
+      <caption id="table-caption">Ordered by total time worked (desc). Rows under 100 hrs are highlighted.</caption>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Employee</th>
+          <th scope="col">Total Hours</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of employees; let i = index; trackBy: trackByName"
+            [class.low-hours]="e.totalHours < 100">
+          <td>{{ i + 1 }}</td>
+          <td>{{ e.name }}</td>
+          <td>{{ e.totalHours }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p *ngIf="!employees.length" class="muted">No data returned.</p>
+  </ng-container>
+
+  <ng-template #loading>
+    <p class="muted">Loading employees…</p>
+  </ng-template>
+</section>
