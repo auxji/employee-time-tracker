@@ -60,9 +60,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dell\\Desktop\\rare crew\\employee-time-tracker\\csharp-test\\EmployeeWorkTime.csproj",
-      "projectName": "EmployeeWorkTime",
-      "projectPath": "C:\\Users\\Dell\\Desktop\\rare crew\\employee-time-tracker\\csharp-test\\EmployeeWorkTime.csproj",
+      "projectUniqueName": "C:\\Users\\Dell\\Desktop\\rare crew\\employee-time-tracker\\csharp-test\\csharp-test.csproj",
+      "projectName": "csharp-test",
+      "projectPath": "C:\\Users\\Dell\\Desktop\\rare crew\\employee-time-tracker\\csharp-test\\csharp-test.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Dell\\Desktop\\rare crew\\employee-time-tracker\\csharp-test\\obj\\",
       "projectStyle": "PackageReference",

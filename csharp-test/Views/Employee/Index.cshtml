@@ -1,0 +1,28 @@
+@model List<EmployeeWorkTime.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee Time Tracker";
+}
+
+<h2>Employee Time Tracker</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Total Time Worked (hours)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            var rowStyle = employee.TotalTimeWorked < 100 ? "background-color: #ffcccc;" : "";
+            <tr style="@rowStyle">
+                <td>@employee.EmployeeName</td>
+                <td>@Math.Round(employee.TotalTimeWorked, 2)</td>
+                <td>@employee.EntryNotes</td>
+            </tr>
+        }
+    </tbody>
+</table>

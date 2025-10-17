@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BnJYxz4uW7vee2sMGekqYjgHe0qQAs2wWAK0xbe5i/0fyA9PiE4/ZLDq57vcex8t0ElgyPHSmp5p4I3sUOw23w==",
+  "dgSpecHash": "JZ41aSm+VwVXvIBXO2GZb8SPAyDNKDkKFR5eutbyfT1GuKVxeqaPvbfD2FO0QNLprXOWg4DClayxvwFFe3R/Lw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dell\\Desktop\\rare crew\\employee-time-tracker\\csharp-test\\EmployeeWorkTime.csproj",
+  "projectFilePath": "C:\\Users\\Dell\\Desktop\\rare crew\\employee-time-tracker\\csharp-test\\csharp-test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
   ],
