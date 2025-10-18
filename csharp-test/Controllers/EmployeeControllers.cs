@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using EmployeeWorkTime.Models;
 using Newtonsoft.Json.Linq;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 
@@ -18,7 +15,7 @@ namespace EmployeeWorkTime.Controllers
             _httpClient = new HttpClient();
         }
 
-        // 🧮 TASK (a): Display Employee Table
+        //  Table
         public async Task<IActionResult> Index()
         {
             var url = "https://rc-vault-fap-live-1.azurewebsites.net/api/gettimeentries?code=vO17RnE8vuzXzPJo5eaLLjXjmRW07law99QTD90zat9FfOQJKKUcgQ==";
@@ -36,19 +33,17 @@ namespace EmployeeWorkTime.Controllers
                         var end = x["EndTimeUtc"]?.ToObject<DateTime>();
                         return (start != null && end != null) ? (end.Value - start.Value).TotalHours : 0;
                     }),
-                    // Example: store last note for “Action” column
                     EntryNotes = g.Last()["EntryNotes"]?.ToString()
                 })
                 .OrderByDescending(e => e.TotalTimeWorked)
                 .ToList();
 
-            // ✅ Generate chart whenever page loads (optional)
-            await GeneratePieChart(employeeTotals);
+           // await GeneratePieChart(employeeTotals);
 
             return View(employeeTotals);
         }
 
-        // 🥧 TASK (b): Generate pie chart as PNG and return it directly
+        // pie chart
         [HttpGet]
         public async Task<IActionResult> Chart()
         {
@@ -77,7 +72,7 @@ namespace EmployeeWorkTime.Controllers
             return File(bytes, "image/png");
         }
 
-        // 📊 Helper method to generate pie chart PNG
+        
         private async Task<string> GeneratePieChart(List<Employee> employeeTotals)
         {
             var chart = new Chart
