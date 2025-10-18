@@ -5,7 +5,6 @@ import { Chart, PieController, ArcElement, Tooltip, Legend, ChartOptions, Plugin
 import { EmployeeService } from '../../services/employee.service';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-// ✅ Register the plugin & chart elements
 Chart.register(PieController, ArcElement, Tooltip, Legend, ChartDataLabels);
 
 
@@ -21,12 +20,12 @@ Chart.register(PieController, ArcElement, Tooltip, Legend, ChartDataLabels);
 export class PieChartComponent implements OnInit {
   pieChartData: any;
   pieChartOptions!: ChartOptions<'pie'>;
-  plugins: Plugin<'pie'>[] = [ChartDataLabels];  // ✅ correctly typed
+  plugins: Plugin<'pie'>[] = [ChartDataLabels];  
 
   constructor(private employeeService: EmployeeService) {}
 
   ngOnInit(): void {
-    const pastelColors = [
+    const Colors = [
       '#B5838D', '#FFB4A2', '#FFCDB2', '#E5989B',
       '#B5EAD7', '#C7CEEA', '#FFDAC1', '#E2F0CB',
       '#F4BFBF', '#A2D2FF'
@@ -42,7 +41,7 @@ export class PieChartComponent implements OnInit {
         datasets: [
           {
             data: values,
-            backgroundColor: pastelColors.slice(0, data.length),
+            backgroundColor: Colors.slice(0, data.length),
             borderWidth: 0
           }
         ]

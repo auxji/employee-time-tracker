@@ -1,6 +1,5 @@
 <section class="wrap">
   <h2>Employees by Total Hours</h2>
-  <p class="muted">Ordered by total time worked (desc). Rows under 100 hrs are highlighted.</p>
 
   <ng-container *ngIf="employees$ | async as employees; else loading">
     <table class="grid" aria-label="Employees by total time">
@@ -16,7 +15,9 @@
             [class.low]="e.totalHours < 100">
           <td>{{ e.name }}</td>
           <td>{{ e.totalHours }} hrs</td>
-          <td><a href="#" (click)="$event.preventDefault(); onEdit(e.name)">Edit</a></td>
+          <td>{{ e.notes || '—' }}</td>
+
+         <!--<td><a href="#" (click)="$event.preventDefault(); onEdit(e.name)">Edit</a></td> --> 
         </tr>
       </tbody>
     </table>

@@ -39,26 +39,36 @@ export class EmployeeService {
 
 
   getEmployeesByTotalHours(): Observable<EmployeeAggregate[]> {
-    return this.getTimeEntries().pipe(
-      map(entries => {
-        const totals = new Map<string, number>();
+  return this.getTimeEntries().pipe(
+    map(entries => {
+      const totals = new Map<string, { hours: number; note?: string }>();
 
-        for (const e of entries) {
-          if (!e.EmployeeName || e.DeletedOn) continue;
-          if (!e.StarTimeUtc || !e.EndTimeUtc) continue;
+      for (const e of entries) {
+        if (!e.EmployeeName || e.DeletedOn) continue;
+        if (!e.StarTimeUtc || !e.EndTimeUtc) continue;
 
-          const start = new Date(e.StarTimeUtc).getTime();
-          const end = new Date(e.EndTimeUtc).getTime();
-          if (isNaN(start) || isNaN(end) || end <= start) continue;
+        const start = new Date(e.StarTimeUtc).getTime();
+        const end = new Date(e.EndTimeUtc).getTime();
+        if (isNaN(start) || isNaN(end) || end <= start) continue;
 
-          const hours = (end - start) / (1000 * 60 * 60);
-          totals.set(e.EmployeeName, (totals.get(e.EmployeeName) ?? 0) + hours);
-        }
+        const hours = (end - start) / (1000 * 60 * 60);
+        const existing = totals.get(e.EmployeeName);
 
-        return Array.from(totals.entries())
-          .map(([name, totalHours]) => ({ name, totalHours: +totalHours.toFixed(2) }))
-          .sort((a, b) => b.totalHours - a.totalHours);
-      })
-    );
-  }
+        totals.set(e.EmployeeName, {
+          hours: (existing?.hours ?? 0) + hours,
+          note: e.EntryNotes || existing?.note || ''
+        });
+      }
+
+      return Array.from(totals.entries())
+        .map(([name, data]) => ({
+          name,
+          totalHours: +data.hours.toFixed(2),
+          notes: data.note
+        }))
+        .sort((a, b) => b.totalHours - a.totalHours);
+    })
+  );
+}
+
 }

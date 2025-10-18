@@ -1,7 +1,10 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { EmployeeService, EmployeeAggregate } from '../../services/employee.service';
+import { EmployeeAggregate } from '../../models/employee-aggregate.model';
+import { EmployeeService } from '../../services/employee.service';
+
+
 
 @Component({
   selector: 'app-employee-table',
