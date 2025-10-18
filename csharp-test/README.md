@@ -1,10 +1,6 @@
 
 
-This is a simple ASP.NET Core MVC project that:
-- Fetches employee work logs from a public API
-- Displays them in a sortable table
-- Generates a **pie chart** showing total hours worked per employee
-- Kako bi generisala pie-chart koristila sam se bibliotekom koja ima dependency na Windows, iz tog razloga radi samo na Windows-u
+ Kako bi generisala pie-chart koristila sam se bibliotekom koja ima dependency na Windows, iz tog razloga radi samo na Windows-u
 
 ---
 
