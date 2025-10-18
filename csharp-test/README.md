@@ -1,6 +1,6 @@
 
 
- Kako bi generisala pie-chart koristila sam se bibliotekom koja ima dependency na Windows, iz tog razloga radi samo na Windows-u
+ Kako bi generisala pie-chart koristila sam se bibliotekom koja ima dependency na Windows, iz tog razloga radi isključivo na Windows operativnom sistemu.
 
 ---
 
